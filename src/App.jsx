@@ -8,7 +8,18 @@ import { useRef } from "react";
 import Container from "./components/Container";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+
 import LogoKopijatigota from "../public/logo-only-nobg.png";
+import LogoIKPI from "./assets/Logo-IKPI.png";
+import LogoAOTCA from "./assets/logo-AOTCA.png";
+import Media1 from "./assets/media/Instagram1.jpg";
+import Media2 from "./assets/media/Instagram2.jpg";
+import Media3 from "./assets/media/Instagram3.jpg";
+import Media4 from "./assets/media/Instagram4.jpg";
+import Media5 from "./assets/media/Instagram5.jpg";
+import Media6 from "./assets/media/Instagram6.jpg";
+import Media7 from "./assets/media/Instagram7.jpg";
+import Media8 from "./assets/media/Instagram8.jpg";
 
 function App() {
   const openLink = (url) => {
@@ -41,7 +52,7 @@ function App() {
                 </h2>
               </div>
 
-              <div className=" flex justify-center pt-10 gap-5 text-xl font-semibold">
+              <div className=" flex justify-center py-10 gap-5 text-xl font-semibold">
                 <button
                   onClick={() =>
                     openLink("https://www.instagram.com/kopijatigota/")
@@ -59,6 +70,25 @@ function App() {
                   <AiOutlineArrowDown />
                 </button>
               </div>
+
+              <div className=" flex justify-center w-full">
+                <div>
+                  <p className=" text-sm pb-1">Member of:</p>
+
+                  <div className=" flex gap-5 items-center">
+                    <img
+                      className=" w-24 hover:scale-105 transition duration-300"
+                      src={LogoIKPI}
+                      alt="logo-ikpi"
+                    />
+                    <img
+                      className=" w-24 hover:scale-105 transition duration-300"
+                      src={LogoAOTCA}
+                      alt="logo-aotca"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Container>
@@ -66,7 +96,7 @@ function App() {
 
       <div ref={moreInfo} className=" bg-amber-50">
         <Container>
-          <div className=" md:px-20 px-10 text-center md:text-xl text-xs">
+          <div className=" md:px-20 px-10 text-center md:text-xl text-xs py-20">
             <h2 className=" md:text-4xl text-2xl font-semibold">
               Tentang Komunitas
             </h2>
@@ -136,6 +166,49 @@ function App() {
                   Simbol pertumbuhan, semangat positif, dan kesegaran komunitas.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div className=" py-20 px-10">
+            <div>
+              <h3 className=" md:text-4xl text-2xl font-semibold text-center">
+                Galeri & Media Sosial
+              </h3>
+            </div>
+
+            <div className=" md:mt-16 marquee-container">
+              <div className=" gap-10 marquee">
+                <img className="w-xl" src={Media1} alt="media-1" />
+                <img className="w-xl" src={Media2} alt="media-2" />
+                <img className="w-xl" src={Media3} alt="media-3" />
+                <img className="w-xl" src={Media4} alt="media-4" />
+                <img className="w-xl" src={Media5} alt="media-5" />
+                <img className="w-xl" src={Media6} alt="media-6" />
+                <img className="w-xl" src={Media7} alt="media-7" />
+                <img className="w-xl" src={Media8} alt="media-8" />
+                <img className="w-xl" src={Media1} alt="media-1-duplicate" />
+                <img className="w-xl" src={Media2} alt="media-2-duplicate" />
+                <img className="w-xl" src={Media3} alt="media-3-duplicate" />
+                <img className="w-xl" src={Media4} alt="media-4-duplicate" />
+                <img className="w-xl" src={Media5} alt="media-5-duplicate" />
+                <img className="w-xl" src={Media6} alt="media-6-duplicate" />
+                <img className="w-xl" src={Media7} alt="media-7-duplicate" />
+                <img className="w-xl" src={Media8} alt="media-8-duplicate" />
+              </div>
+            </div>
+
+            <div className=" pt-10 px-10 flex md:gap-4 items-start">
+              <p className=" font-semibold italic md:text-base text-xs">
+                Lihat kegiatan terbaru dan update komunitas di Instagram kami :
+              </p>
+              <button
+                onClick={() =>
+                  openLink("https://www.instagram.com/kopijatigota/")
+                }
+                className=" cursor-pointer hover:scale-105 text-orange-500"
+              >
+                <BsInstagram size={35} />
+              </button>
             </div>
           </div>
         </Container>

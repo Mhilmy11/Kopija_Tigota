@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <>
-      <div className=" py-10 bg-gradient-to-t from-green-600 via-amber-50 to-amber-50">
+      <div className=" pt-20 pb-10 bg-gradient-to-t from-green-600 via-amber-50 to-amber-50">
         <Container>
           <div className=" px-10">
             <p className=" md:text-xl text-xs font-semibold text-center">
