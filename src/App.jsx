@@ -13,6 +13,12 @@ import Navbar from "./components/Navbar";
 import LogoIKPI from "./assets/Logo-IKPI.png";
 import LogoAOTCA from "./assets/logo-AOTCA.png";
 
+import Client1 from "./assets/clients/client1.png";
+import Client2 from "./assets/clients/client2.png";
+import Client3 from "./assets/clients/client3.png";
+import Client4 from "./assets/clients/client4.png";
+import Client5 from "./assets/clients/client5.png";
+
 function App() {
   const openLink = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
@@ -23,13 +29,15 @@ function App() {
     moreInfo.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const clients = [Client1, Client5, Client3];
+
   return (
     <>
-      <div className=" bg-gradient-to-bl from-green-600 via-amber-50 to-amber-50 h-screen">
+      <div className=" bg-gradient-to-bl from-green-600 via-amber-50 to-amber-50 h-[80vh] md:h-screen">
         <Container>
           <Navbar openLink={openLink} />
 
-          <div className=" flex justify-center w-full pt-14">
+          <div className=" flex justify-center w-full pt-14 md:pt-5">
             <div>
               <div className=" text-center md:w-3xl">
                 <h1 className=" md:text-5xl text-2xl font-bold">
@@ -43,7 +51,7 @@ function App() {
                 </h2>
               </div>
 
-              <div className=" flex justify-center py-10 gap-5 text-xl font-semibold">
+              <div className=" flex justify-center pt-8 gap-5 text-xl font-semibold">
                 <button
                   onClick={() =>
                     openLink("https://www.instagram.com/kopijatigota/")
@@ -62,9 +70,11 @@ function App() {
                 </button>
               </div>
 
-              <div className=" flex justify-center w-full">
+              <div className=" flex justify-center w-full pt-5">
                 <div>
-                  <p className=" text-sm pb-1">Member of:</p>
+                  <p className=" text-xs pb-1 italic font-semibold">
+                    Member of:
+                  </p>
 
                   <div className=" flex gap-5 items-center">
                     <img
@@ -77,6 +87,28 @@ function App() {
                       src={LogoAOTCA}
                       alt="logo-aotca"
                     />
+                  </div>
+                </div>
+              </div>
+
+              <div className=" flex justify-center w-full pt-5">
+                <div>
+                  <p className=" text-xs italic font-semibold pb-2">
+                    Powered by:
+                  </p>
+
+                  <div className=" grid md:grid-cols-5 grid-cols-2 gap-4 justify-center">
+                    {clients.map((img, i) => (
+                      <div key={i} className=" w-24">
+                        <img src={img} alt={i} />
+                      </div>
+                    ))}
+                    <div className=" w-16">
+                      <img src={Client2} alt="client-2" />
+                    </div>
+                    <div className=" w-14">
+                      <img src={Client4} alt="client-4" />
+                    </div>
                   </div>
                 </div>
               </div>
