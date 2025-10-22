@@ -68,7 +68,7 @@ export default function LandingPage() {
                 <span className="font-semibold"> Kopijatigota</span>, hadir
                 sebagai wadah silaturahmi dan komunikasi bagi alumni AOTCA serta
                 calon peserta. Tujuan utama kami adalah membangun jejaring
-                profesional, berbagi ilmu, dan mempererat hubungan antaranggota
+                profesional, berbagi ilmu, dan mempererat hubungan antar anggota
                 melalui kegiatan edukatif, rekreasi, dan sosial.
               </p>
               <p className="text-slate-700 leading-relaxed">

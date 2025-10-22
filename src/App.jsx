@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <div className=" bg-gradient-to-bl from-green-600 via-amber-50 to-amber-50 h-[80vh] md:h-screen">
+      <div className=" bg-gradient-to-bl from-green-600 via-amber-50 to-amber-50">
         <Container>
           <Navbar openLink={openLink} />
 
