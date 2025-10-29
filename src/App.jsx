@@ -18,6 +18,7 @@ import Client2 from "./assets/clients/client2.png";
 import Client3 from "./assets/clients/client3.png";
 import Client4 from "./assets/clients/client4.png";
 import Client5 from "./assets/clients/client5.png";
+import Client6 from "./assets/clients/client6.png";
 
 function App() {
   const openLink = (url) => {
@@ -97,14 +98,17 @@ function App() {
                     Powered by:
                   </p>
 
-                  <div className=" grid md:grid-cols-5 grid-cols-2 gap-4 justify-center">
+                  <div className=" grid md:grid-cols-3 grid-cols-2 gap-4 items-center justify-center">
                     {clients.map((img, i) => (
                       <div key={i} className=" w-24">
                         <img src={img} alt={i} />
                       </div>
                     ))}
-                    <div className=" w-16">
+                    <div className=" w-18">
                       <img src={Client2} alt="client-2" />
+                    </div>
+                    <div className=" w-14">
+                      <img src={Client6} alt="client-6" />
                     </div>
                     <div className=" w-14">
                       <img src={Client4} alt="client-4" />
