@@ -2,8 +2,10 @@ import "./App.css";
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FiMenu, FiX, FiChevronRight, FiCamera } from "react-icons/fi";
+import { FiChevronRight, FiCamera } from "react-icons/fi";
 import { MdOutlineDateRange } from "react-icons/md";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const photos = [
   {
@@ -52,7 +54,6 @@ const poweredCompanies = [
 const officialPartner = "PT. Sinergi Pajak Nusantara";
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const carouselRef = useRef(null);
 
@@ -68,74 +69,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans bg-amber-50 text-slate-800">
-      {/* NAV */}
-      <nav className="fixed w-full z-40 bg-green-600/80 backdrop-blur-md text-white">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <LogoCompact />
-            <div>
-              <div className="font-bold text-lg tracking-tight">
-                KOPIJATIGOTA
-              </div>
-              <div className="text-xs opacity-90">
-                Sarana komunikasi dan silaturahmi bagi Alumni dan Calon Peserta
-                AOTCA.
-              </div>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#about" className="hover:underline">
-              About
-            </a>
-            <a href="#activities" className="hover:underline">
-              Activities
-            </a>
-            <a href="#gallery" className="hover:underline">
-              Gallery
-            </a>
-            <a href="#partners" className="hover:underline">
-              Partners
-            </a>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="ml-4 px-4 py-2 rounded-full bg-amber-50 text-green-700 font-semibold shadow"
-            >
-              Join
-            </button>
-          </div>
-          <button
-            className="md:hidden p-2 rounded bg-white/10"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="md:hidden px-4 pb-4">
-            <a href="#about" className="block py-2">
-              About
-            </a>
-            <a href="#activities" className="block py-2">
-              Activities
-            </a>
-            <a href="#gallery" className="block py-2">
-              Gallery
-            </a>
-            <a href="#partners" className="block py-2">
-              Partners
-            </a>
-            <button
-              onClick={() => {
-                setModalOpen(true);
-                setMenuOpen(false);
-              }}
-              className="w-full mt-2 py-2 rounded bg-amber-50 text-green-700 font-semibold"
-            >
-              Join
-            </button>
-          </div>
-        )}
-      </nav>
+      <Navbar setModalOpen={setModalOpen} />
 
       {/* HERO */}
       <header className="pt-20">
@@ -238,33 +172,24 @@ export default function App() {
               kegiatan yang menyenangkan dan bermanfaat.
             </p>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <StatCard title="Member of" value="IKPI · AOTCA" />
-              <StatCard
-                title="Powered by"
-                value={poweredCompanies.join(", ")}
-                small
-              />
-              <StatCard title="Official Partner" value={officialPartner} />
-            </div>
-
             <div className="mt-8">
               <h3 className="font-semibold text-green-900">
                 Tiga Makna pada Logo
               </h3>
-              <ul className="mt-3 grid sm:grid-cols-3 gap-4">
-                <li className="bg-white rounded-lg p-4 shadow">
-                  1. Jejaring & Kolaborasi — menggambarkan tali persahabatan dan
-                  profesionalitas.
-                </li>
-                <li className="bg-white rounded-lg p-4 shadow">
-                  2. Pembelajaran — simbol buku / lampu yang menandakan edukasi.
-                </li>
-                <li className="bg-white rounded-lg p-4 shadow">
-                  3. Kontribusi Sosial — elemen daun/lingkaran yang
-                  merepresentasikan kepedulian.
-                </li>
-              </ul>
+              <div className="mt-3 grid sm:grid-cols-3 gap-4">
+                <div className="bg-white rounded-lg p-4 shadow">
+                  1. Jabat tangan — simbol silaturahmi, kepercayaan, dan koneksi
+                  antar anggota.
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow">
+                  2. Lingkaran penuh — melambangkan komunitas yang utuh,
+                  inklusif, dan berkesinambungan.
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow">
+                  3. Daun kecil — simbol pertumbuhan, semangat positif, dan
+                  kesegaran komunitas muda.
+                </div>
+              </div>
             </div>
 
             <div className="mt-8">
@@ -460,42 +385,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="mt-12 bg-green-900 text-amber-50 py-10">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
-          <div>
-            <LogoCompact light />
-            <div className="mt-3 text-sm opacity-90">
-              KOPIJATIGOTA — Sarana komunikasi & silaturahmi untuk alumni dan
-              calon peserta AOTCA.
-            </div>
-          </div>
-
-          <div>
-            <h5 className="font-semibold">Quick Links</h5>
-            <ul className="mt-3 text-sm space-y-2 opacity-90">
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#activities">Activities</a>
-              </li>
-              <li>
-                <a href="#gallery">Gallery</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-semibold">Contact</h5>
-            <div className="mt-3 text-sm opacity-90">
-              Email: kopijatigota@example.com
-              <br />
-              Instagram: @kopijatigota
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* MODAL */}
       {modalOpen && (
@@ -554,57 +444,6 @@ function Modal({ children, onClose }) {
       >
         {children}
       </motion.div>
-    </div>
-  );
-}
-
-function StatCard({ title, value, small }) {
-  return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <div className="text-xs text-slate-500">{title}</div>
-      <div
-        className={`mt-1 text-sm ${
-          small ? "text-sm" : "text-base"
-        } font-semibold text-green-900`}
-      >
-        {value}
-      </div>
-    </div>
-  );
-}
-
-function LogoCompact({ light = false }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center"
-        style={{ background: light ? "rgba(255,255,255,0.06)" : "#063814" }}
-      >
-        <svg
-          width="34"
-          height="34"
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            x="2"
-            y="2"
-            width="44"
-            height="44"
-            rx="8"
-            fill={light ? "#ffffff" : "#A7F3D0"}
-          />
-          <path
-            d="M12 28C14 22 18 18 24 18"
-            stroke={light ? "#065f46" : "#064e3b"}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="34" cy="18" r="3" fill={light ? "#065f46" : "#064e3b"} />
-        </svg>
-      </div>
     </div>
   );
 }
