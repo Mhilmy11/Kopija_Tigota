@@ -2,60 +2,84 @@ import "./App.css";
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { FiChevronRight, FiCamera } from "react-icons/fi";
-import { MdOutlineDateRange } from "react-icons/md";
+import { FiCamera } from "react-icons/fi";
+import { BsInstagram } from "react-icons/bs";
+import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Modal from "./components/Modal";
+
+import AotcaLogo from "./assets/logo-AOTCA.png";
+import IKPIlogo from "./assets/Logo-IKPI.png";
+import KiaraGroupLogo from "./assets/kiara-group.png";
+
+import Client1 from "./assets/clients/client1.png";
+import Client2 from "./assets/clients/client2.png";
+import Client3 from "./assets/clients/client3.png";
+import Client4 from "./assets/clients/client4.png";
+import Client5 from "./assets/clients/client5.png";
+import Client6 from "./assets/clients/client6.png";
+
+import Instagram1 from "./assets/media/Instagram1.jpg";
+import Instagram2 from "./assets/media/Instagram2.jpg";
+import Instagram3 from "./assets/media/Instagram3.jpg";
+import Instagram4 from "./assets/media/Instagram4.jpg";
+import Instagram5 from "./assets/media/Instagram5.jpg";
+import Instagram6 from "./assets/media/Instagram6.jpg";
+import Instagram7 from "./assets/media/Instagram7.jpg";
+import Instagram8 from "./assets/media/Instagram8.jpg";
 
 const photos = [
   {
-    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80",
-    caption: "Workshop Pajak: Diskusi kasus dan praktik terbaik",
+    src: Instagram1,
+    caption: "AOTCA 2024 Hounzou China",
   },
   {
-    src: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80",
+    src: Instagram2,
     caption: "Silaturahmi alumni setelah acara resmi",
   },
   {
-    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80",
-    caption: "Sesi networking dan tukar pengalaman",
+    src: Instagram3,
+    caption:
+      "Mengikuti acara buka bersama Asosiasi CEO Mastermind Indonesia (ACMI)",
   },
   {
-    src: "https://images.unsplash.com/photo-1555375771-6a0b19b83b16?w=1200&q=80",
+    src: Instagram4,
     caption: "Studi kasus bersama narasumber",
   },
   {
-    src: "https://images.unsplash.com/photo-1551836022-1f6b1a0e5b6b?w=1200&q=80",
+    src: Instagram5,
     caption: "Foto bersama peserta AOTCA",
   },
   {
-    src: "https://images.unsplash.com/photo-1526318472351-c75fcf070d8b?w=1200&q=80",
-    caption: "Kegiatan sosial: donor & edukasi masyarakat",
+    src: Instagram6,
+    caption:
+      "Kopijatigota silaturahmi ke Kantor PKF dan Pratama Konsultan 22 September 20225",
   },
   {
-    src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80",
-    caption: "Rekreasi edukatif: outbound & bonding",
+    src: Instagram7,
+    caption:
+      "Kopijatigota ikut berpartisipasi dalam mensponsori kegiatan HUT IKPI Ke 80",
   },
   {
-    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&q=80",
-    caption: "Diskusi panel: inovasi perpajakan",
+    src: Instagram8,
+    caption:
+      "Kopijatigota silaturahmi di acara Halal Bi Halal IKPI Pusat di Hotel Aston Kartika Grogol",
   },
 ];
-
-const poweredCompanies = [
-  "PT. Nexus TaxTech",
-  "PT. Fiscal Bridge",
-  "PT. SmartLedger",
-  "PT. AuditFlow",
-  "PT. EduTax Solutions",
-  "PT. GreenLedger",
-];
-
-const officialPartner = "PT. Sinergi Pajak Nusantara";
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
+  const aboutRef = useRef(null);
+  const activitiesRef = useRef(null);
+  const galleryRef = useRef(null);
+  const partnerRef = useRef(null);
   const carouselRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const scrollCarousel = (dir = "right") => {
     if (!carouselRef.current) return;
@@ -69,10 +93,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans bg-amber-50 text-slate-800">
-      <Navbar setModalOpen={setModalOpen} />
+      <Navbar
+        setModalOpen={setModalOpen}
+        onClickAboutRef={() => scrollToSection(aboutRef)}
+        onClickActivitiesRef={() => scrollToSection(activitiesRef)}
+        onClickGalleryRefRef={() => scrollToSection(galleryRef)}
+        onClickPartnerRef={() => scrollToSection(partnerRef)}
+      />
 
-      {/* HERO */}
-      <header className="pt-20">
+      <header className="pt-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div
@@ -92,24 +121,26 @@ export default function App() {
               <div className="mt-6 flex gap-3">
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="px-5 py-3 rounded-lg bg-green-900 text-amber-50 font-semibold shadow-lg hover:scale-[1.02] transform transition"
+                  className="px-5 py-3 rounded-lg bg-green-900 text-amber-50 font-semibold shadow-lg hover:scale-[1.02] transform transition cursor-pointer"
                 >
                   Gabung Sekarang
                 </button>
-                <a
-                  href="#about"
-                  className="px-5 py-3 rounded-lg border border-green-900 text-green-900 font-semibold hover:bg-green-50"
+                <button
+                  onClick={() => scrollToSection(aboutRef)}
+                  className="px-5 py-3 rounded-lg border border-green-900 text-green-900 font-semibold hover:bg-green-50 cursor-pointer"
                 >
                   Pelajari Lebih Lanjut
-                </a>
+                </button>
               </div>
 
-              <div className="mt-8 flex items-center gap-6">
+              <div className="mt-8 flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <MdOutlineDateRange size={22} />
                   <div>
                     <div className="text-sm font-medium">Member of</div>
-                    <div className="text-xs">IKPI · AOTCA</div>
+                    <div className=" flex items-center gap-4 mt-1">
+                      <img className=" w-8" src={AotcaLogo} alt="aotca-logo" />
+                      <img className=" w-8" src={IKPIlogo} alt="ikpi-logo" />
+                    </div>
                   </div>
                 </div>
 
@@ -139,22 +170,19 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-t from-green-900/50 to-transparent" />
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="absolute left-6 bottom-6 bg-amber-50/90 rounded-xl p-4 backdrop-blur-sm"
+                className="absolute left-6 bottom-6 bg-amber-50/90 rounded-xl px-4 py-2 backdrop-blur-sm"
               >
                 <div className="text-sm font-semibold text-green-900">
-                  Upcoming: Workshop Pajak
+                  AOTCA 2024
                 </div>
-                <div className="text-xs text-slate-600">
-                  Sesi praktek & studi kasus bersama narasumber
-                </div>
+                <div className="text-xs text-slate-600">Hounzou, China</div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </header>
 
-      {/* ABOUT */}
-      <section id="about" className="max-w-6xl mx-auto px-4 py-16">
+      <section ref={aboutRef} className="max-w-6xl mx-auto px-4 py-32">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2">
             <h2 className="text-2xl font-bold text-green-900">
@@ -208,7 +236,7 @@ export default function App() {
             </div>
           </div>
 
-          <aside className="p-6 bg-white rounded-2xl shadow flex flex-col gap-4">
+          <aside className="p-6 bg-white rounded-2xl shadow flex flex-col gap-2">
             <h4 className="font-bold text-green-900">Ringkasan Cepat</h4>
             <div className="text-sm text-slate-600">
               Kopijatigota: wadah silaturahmi alumni & calon peserta AOTCA —
@@ -217,54 +245,74 @@ export default function App() {
 
             <div className="mt-4">
               <h5 className="text-sm font-semibold">Kegiatan Unggulan</h5>
-              <ul className="text-xs mt-2 space-y-1 text-slate-600">
-                <li>Workshop Pajak</li>
-                <li>Study Group</li>
-                <li>Studi Banding & Outbound</li>
-                <li>Acara Sosial & CSR</li>
-                <li>Sharing Session</li>
-                <li>Networking Night</li>
+              <ul className="text-xs mt-2 space-y-1 text-slate-600 list-disc ml-5">
+                <li>AOTCA Annual Event</li>
+                <li>Kegiatan Pajak (DN/LS)</li>
+                <li>Golf</li>
+                <li>Menembak</li>
+                <li>Tenis Meja</li>
+                <li>Pengajian</li>
               </ul>
             </div>
 
             <div className="mt-4">
               <h5 className="text-sm font-semibold">CSR & Kontribusi</h5>
               <div className="text-xs mt-2 text-slate-600">
-                1. Edukasi pajak untuk UMKM lokal
+                1. Penyaluran Magang : Membuka kesempatan magang bagi mahasiswa
+                untuk belajar praktik perpajakan di lingkungan profesional
                 <br />
-                2. Donor & bantuan sosial berbasis komunitas
+                <br />
+                2. Klinik Pajak (Probono) : Memberikan layanan konsultasi pajak
+                gratis bagi masyarakat dan UMKM.
               </div>
             </div>
 
-            <button
-              onClick={() => setModalOpen(true)}
-              className="mt-auto py-2 rounded-lg bg-green-900 text-amber-50 font-semibold"
-            >
-              Daftar Jadi Anggota
-            </button>
+            <div className=" mb-4 flex justify-center">
+              <div>
+                <h3 className="font-semibold text-green-900 text-sm">
+                  {" "}
+                  Member of:
+                </h3>
+                <div className=" flex items-center gap-4 mt-3">
+                  <img className=" w-14" src={AotcaLogo} alt="aotca-logo" />
+                  <img className=" w-14" src={IKPIlogo} alt="ikpi-logo" />
+                </div>
+              </div>
+            </div>
+
+            <div className=" flex gap-2">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="mt-auto py-2 rounded-lg bg-green-900 hover:bg-green-800 text-amber-50 font-semibold cursor-pointer w-full"
+              >
+                Daftar Jadi Anggota
+              </button>
+              <button className=" bg-gradient-to-br from-orange-500 via-yellow-500 to-red-500 cursor-pointer rounded-lg px-2 hover:scale-105 transition duration-300">
+                <BsInstagram size={25} color="white" />
+              </button>
+            </div>
           </aside>
         </div>
       </section>
 
-      {/* ACTIVITIES - horizontal carousel scroll */}
-      <section id="activities" className="bg-green-600/6 py-12">
+      <section ref={activitiesRef} className="bg-green-600/6 py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-bold text-green-900">
-              Kegiatan Komunitas (6)
+              Kegiatan Komunitas
             </h3>
             <div className="flex gap-2">
               <button
                 onClick={() => scrollCarousel("left")}
-                className="p-2 rounded bg-white/90 shadow"
+                className=" text-green-800 hover:text-green-700 transition duration-300 cursor-pointer hover:scale-105"
               >
-                ◀
+                <AiFillLeftCircle size={35} />
               </button>
               <button
                 onClick={() => scrollCarousel("right")}
-                className="p-2 rounded bg-white/90 shadow"
+                className=" text-green-800 hover:text-green-700 transition duration-300 cursor-pointer hover:scale-105"
               >
-                ▶
+                <AiFillRightCircle size={35} />
               </button>
             </div>
           </div>
@@ -276,33 +324,33 @@ export default function App() {
             <div className="flex gap-4 w-max">
               {[
                 {
-                  title: "Workshop Pajak",
-                  desc: "Sesi praktek & studi kasus",
+                  title: "AOTCA Annual Event",
+                  desc: "Partisipasi komunitas dalam event internasional AOTCA.",
                   img: photos[3].src,
                 },
                 {
-                  title: "Study Group",
-                  desc: "Kelompok belajar terstruktur",
+                  title: "Kegiatan Pajak (DN/LS)",
+                  desc: "Seminar, pelatihan, serta diskusi isu pajak dalam & luar negeri.",
                   img: photos[2].src,
                 },
                 {
-                  title: "Networking Night",
-                  desc: "Perkenalan & kolaborasi",
+                  title: "Golf",
+                  desc: "Pertemuan santai sekaligus olahraga untuk networking.",
                   img: photos[1].src,
                 },
                 {
-                  title: "Outbond & Rekreasi",
-                  desc: "Team building & fun",
+                  title: "Menembak",
+                  desc: "Kegiatan rekreasional yang menjaga disiplin dan fokus.",
                   img: photos[6].src,
                 },
                 {
-                  title: "CSR & Aksi Sosial",
-                  desc: "Edukasi UMKM & donasi",
+                  title: "Tenis Meja",
+                  desc: "Aktivitas ringan yang mempererat kebersamaan.",
                   img: photos[5].src,
                 },
                 {
-                  title: "Sharing Session",
-                  desc: "Sesi pengalaman praktis",
+                  title: "Pengajian",
+                  desc: "Kegiatan rohani rutin sebagai wadah memperkuat silaturahmi.",
                   img: photos[7].src,
                 },
               ].map((it, idx) => (
@@ -317,10 +365,6 @@ export default function App() {
                       {it.title}
                     </div>
                     <div className="text-sm text-slate-600 mt-2">{it.desc}</div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="text-xs text-slate-500">Lebih lanjut</div>
-                      <FiChevronRight />
-                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -329,8 +373,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* GALLERY */}
-      <section id="gallery" className="max-w-6xl mx-auto px-4 py-16">
+      <section ref={galleryRef} className="max-w-6xl mx-auto px-4 py-20">
         <h3 className="text-2xl font-bold text-green-900 mb-6">
           Galeri Kegiatan
         </h3>
@@ -354,8 +397,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* PARTNERS */}
-      <section id="partners" className="bg-green-600/6 py-12">
+      <section ref={partnerRef} className="bg-green-600/6 py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-xl font-bold text-green-900 mb-6">
             Partners & Supporters
@@ -363,87 +405,41 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 bg-white rounded-xl shadow">
               <h4 className="font-semibold">Official Partner</h4>
-              <div className="mt-2 text-sm text-slate-600">
-                {officialPartner}
+              <div className="mt-2 flex justify-center">
+                <div>
+                  <img
+                    className=" w-20"
+                    src={KiaraGroupLogo}
+                    alt="kiara-group-logo"
+                  />
+                  <p className=" text-end font-bold text-2xl">KIARA</p>
+                  <p className=" text-end font-bold">GROUP</p>
+                </div>
               </div>
             </div>
 
             <div className="p-6 bg-white rounded-xl shadow">
-              <h4 className="font-semibold">Powered By (6)</h4>
-              <ul className="mt-3 text-sm text-slate-600 space-y-1">
-                {poweredCompanies.map((c, idx) => (
-                  <li key={idx}>• {c}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-xl shadow">
-              <h4 className="font-semibold">Member Of</h4>
-              <div className="mt-2 text-sm text-slate-600">IKPI · AOTCA</div>
+              <h4 className="font-semibold">Powered By</h4>
+              <div className=" grid md:grid-cols-3 grid-cols-2 items-center gap-4 mt-2">
+                <img className=" w-28" src={Client1} alt="logo-client-1" />
+                <img className=" w-28" src={Client5} alt="logo-client-2" />
+                <img className=" w-28" src={Client3} alt="logo-client-3" />
+                <img className=" w-20" src={Client2} alt="logo-client-4" />
+                <img className=" w-20" src={Client4} alt="logo-client-5" />
+                <img className=" w-20" src={Client6} alt="logo-client-6" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <Footer
+        onClickAboutRef={() => scrollToSection(aboutRef)}
+        onClickActivitiesRef={() => scrollToSection(activitiesRef)}
+        onClickGalleryRefRef={() => scrollToSection(galleryRef)}
+      />
 
-      {/* MODAL */}
-      {modalOpen && (
-        <Modal onClose={() => setModalOpen(false)}>
-          <div className="p-4">
-            <h3 className="text-xl font-bold text-green-900">
-              Form Pendaftaran Singkat
-            </h3>
-            <p className="text-sm text-slate-600 mt-2">
-              Isi data singkat untuk bergabung atau dapatkan info acara terbaru.
-            </p>
-            <form className="mt-4 grid gap-3">
-              <input
-                className="p-3 rounded border"
-                placeholder="Nama Lengkap"
-              />
-              <input className="p-3 rounded border" placeholder="Email" />
-              <input
-                className="p-3 rounded border"
-                placeholder="No. HP (opsional)"
-              />
-              <div className="flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    alert("Terima kasih! (demo)");
-                  }}
-                  className="py-2 px-4 rounded bg-green-900 text-amber-50 font-semibold"
-                >
-                  Kirim
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(false)}
-                  className="py-2 px-4 rounded border"
-                >
-                  Batal
-                </button>
-              </div>
-            </form>
-          </div>
-        </Modal>
-      )}
-    </div>
-  );
-}
-
-function Modal({ children, onClose }) {
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/30" onClick={onClose} />
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="relative z-10 w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden"
-      >
-        {children}
-      </motion.div>
+      {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
     </div>
   );
 }
