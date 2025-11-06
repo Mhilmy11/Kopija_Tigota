@@ -1,25 +1,5 @@
 import "./App.css";
 
-import { AiOutlineArrowDown } from "react-icons/ai";
-import { BsInstagram } from "react-icons/bs";
-
-import { useRef } from "react";
-
-import Container from "./components/Container";
-import LandingPage from "./pages/LandingPage";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-
-import LogoIKPI from "./assets/Logo-IKPI.png";
-import LogoAOTCA from "./assets/logo-AOTCA.png";
-
-import Client1 from "./assets/clients/client1.png";
-import Client2 from "./assets/clients/client2.png";
-import Client3 from "./assets/clients/client3.png";
-import Client4 from "./assets/clients/client4.png";
-import Client5 from "./assets/clients/client5.png";
-import Client6 from "./assets/clients/client6.png";
-
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiCamera } from "react-icons/fi";
