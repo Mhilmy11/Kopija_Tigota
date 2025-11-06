@@ -1,40 +1,76 @@
-import { AiOutlineCopyrightCircle } from "react-icons/ai";
+import { FaInstagram } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import LogoKopijaTigota from "../assets/logo-only-nobg.png";
 
-import LogoFooter from "../assets/logo-pdf-nobg.png";
-
-import Container from "./Container";
-
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+export default function Footer({
+  onClickAboutRef,
+  onClickActivitiesRef,
+  onClickGalleryRefRef,
+}) {
   return (
-    <>
-      <div className=" pt-20 pb-10 bg-gradient-to-t from-green-600 via-amber-50 to-amber-50">
-        <Container>
-          <div className=" px-10">
-            <p className=" md:text-xl text-xs font-semibold text-center">
-              "Tidak ada kewajiban untuk berangkat, yang terpenting adalah
-              <span className=" font-bold text-green-600"> silaturahmi</span>.
-              Yuk, jadi bagian dari komunitas yang hangat dan saling mendukung!"
-            </p>
-
-            <div className=" flex justify-center mb-10 mt-5">
-              <img
-                className=" md:w-80 w-40"
-                src={LogoFooter}
-                alt="logo-footer"
-              />
-            </div>
-
-            <div className=" flex justify-center items-center italic">
-              <AiOutlineCopyrightCircle />
-              <p className=" text-center pl-1 md:text-sm text-xs">
-                <span className=" font-semibold">{currentYear}</span> Komunitas
-                IKPIJaktim Goes To AOTCA.
-              </p>
+    <footer className="mt-12 bg-green-900 text-amber-50 py-10">
+      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+        <div>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+              <img src={LogoKopijaTigota} alt="navbar-logo" />
             </div>
           </div>
-        </Container>
+
+          <div className="mt-3 text-sm opacity-90">
+            KOPIJATIGOTA — Sarana komunikasi & silaturahmi untuk alumni dan
+            calon peserta AOTCA.
+          </div>
+
+          <div className="text-sm mt-3 italic">
+            © {new Date().getFullYear()} KOPIJATIGOTA — All rights reserved
+          </div>
+        </div>
+
+        <div>
+          <h5 className="font-semibold">Quick Links</h5>
+          <ul className="mt-3 text-sm space-y-2 opacity-90">
+            <li>
+              <button
+                className=" cursor-pointer hover:underline"
+                onClick={onClickAboutRef}
+              >
+                About
+              </button>
+            </li>
+            <li>
+              <button
+                className=" cursor-pointer hover:underline"
+                onClick={onClickActivitiesRef}
+              >
+                Activities
+              </button>
+            </li>
+            <li>
+              <button
+                className=" cursor-pointer hover:underline"
+                onClick={onClickGalleryRefRef}
+              >
+                Gallery
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 className="font-semibold">Contact</h5>
+          <div className="mt-3 text-sm opacity-90">
+            <div className=" flex items-center gap-1">
+              <HiOutlineMail size={20} />
+              <p>info.admin@kopijatigota.id</p>
+            </div>
+            <div className=" flex items-center gap-1 mt-2">
+              <FaInstagram size={20} />
+              <p>@kopijatigota</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </footer>
   );
 }
