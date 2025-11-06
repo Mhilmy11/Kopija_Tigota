@@ -69,6 +69,13 @@ const photos = [
   },
 ];
 
+const handleClickInstagram = () => {
+  window.open(
+    "https://www.instagram.com/kopijatigota?igsh=MXN0ZjY1NXR2c290Ng==",
+    "_blank"
+  );
+};
+
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const aboutRef = useRef(null);
@@ -287,7 +294,10 @@ export default function App() {
               >
                 Daftar Jadi Anggota
               </button>
-              <button className=" bg-gradient-to-br from-orange-500 via-yellow-500 to-red-500 cursor-pointer rounded-lg px-2 hover:scale-105 transition duration-300">
+              <button
+                onClick={handleClickInstagram}
+                className=" bg-gradient-to-br from-orange-500 via-yellow-500 to-red-500 cursor-pointer rounded-lg px-2 hover:scale-105 transition duration-300"
+              >
                 <BsInstagram size={25} color="white" />
               </button>
             </div>

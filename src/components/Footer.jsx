@@ -1,3 +1,5 @@
+import { FaInstagram } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
 import LogoKopijaTigota from "../assets/logo-only-nobg.png";
 
 export default function Footer({
@@ -58,9 +60,14 @@ export default function Footer({
         <div>
           <h5 className="font-semibold">Contact</h5>
           <div className="mt-3 text-sm opacity-90">
-            Email: kopijatigota@example.com
-            <br />
-            Instagram: @kopijatigota
+            <div className=" flex items-center gap-1">
+              <HiOutlineMail size={20} />
+              <p>info.admin@kopijatigota.id</p>
+            </div>
+            <div className=" flex items-center gap-1 mt-2">
+              <FaInstagram size={20} />
+              <p>@kopijatigota</p>
+            </div>
           </div>
         </div>
       </div>
