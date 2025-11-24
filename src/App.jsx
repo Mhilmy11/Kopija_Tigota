@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef, Activity } from "react";
 import { motion } from "framer-motion";
 import { FiCamera } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
@@ -20,6 +20,7 @@ import Client3 from "./assets/clients/client3.png";
 import Client4 from "./assets/clients/client4.png";
 import Client5 from "./assets/clients/client5.png";
 import Client6 from "./assets/clients/client6.png";
+import Client7 from "./assets/clients/client7.png";
 
 import Instagram1 from "./assets/media/Instagram1.jpg";
 import Instagram2 from "./assets/media/Instagram2.jpg";
@@ -29,6 +30,7 @@ import Instagram5 from "./assets/media/Instagram5.jpg";
 import Instagram6 from "./assets/media/Instagram6.jpg";
 import Instagram7 from "./assets/media/Instagram7.jpg";
 import Instagram8 from "./assets/media/Instagram8.jpg";
+import Instagram9 from "./assets/media/Instagram9.jpeg";
 
 const photos = [
   {
@@ -69,6 +71,19 @@ const photos = [
   },
 ];
 
+const FOR_HERO = [
+  {
+    activity: "AOTCA 2024",
+    location: "Hounzou, China",
+    pict: Instagram1,
+  },
+  {
+    activity: "AOTCA 2025",
+    location: "Nepal, South Asia",
+    pict: Instagram9,
+  },
+];
+
 const handleClickInstagram = () => {
   window.open(
     "https://www.instagram.com/kopijatigota?igsh=MXN0ZjY1NXR2c290Ng==",
@@ -83,6 +98,12 @@ export default function App() {
   const galleryRef = useRef(null);
   const partnerRef = useRef(null);
   const carouselRef = useRef(null);
+
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % FOR_HERO.length), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -167,23 +188,30 @@ export default function App() {
               initial={{ x: 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              className="relative"
             >
-              <img
-                src={photos[0].src}
-                alt="hero"
-                className="w-full h-80 md:h-[420px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-900/50 to-transparent" />
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="absolute left-6 bottom-6 bg-amber-50/90 rounded-xl px-4 py-2 backdrop-blur-sm"
-              >
-                <div className="text-sm font-semibold text-green-900">
-                  AOTCA 2024
+              <div className="aspect-[16/9] rounded-xl overflow-hidden shadow-2xl border border-white/5">
+                <div className="w-full h-full relative">
+                  {FOR_HERO.map((b, i) => (
+                    <img
+                      key={b.id}
+                      src={b.pict}
+                      alt={b.activity}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                        i === idx ? "opacity-100" : "opacity-0 scale-95"
+                      }`}
+                    />
+                  ))}
+                  <div className="absolute left-6 bottom-6 bg-white/6 px-4 py-3 rounded-2xl backdrop-blur-sm border border-white/8">
+                    <div className="text-sm font-semibold text-white">
+                      {FOR_HERO[idx].activity}
+                    </div>
+                    <div className="text-xs text-gray-300">
+                      {FOR_HERO[idx].location}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs text-slate-600">Hounzou, China</div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -414,6 +442,19 @@ export default function App() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 bg-white rounded-xl shadow">
+              <h4 className="font-semibold">Powered By</h4>
+              <div className=" grid md:grid-cols-3 grid-cols-2 items-center gap-4 mt-2">
+                <img className=" w-28" src={Client1} alt="logo-client-1" />
+                <img className=" w-28" src={Client5} alt="logo-client-2" />
+                <img className=" w-28" src={Client7} alt="logo-client-7" />
+                <img className=" w-28" src={Client3} alt="logo-client-3" />
+                <img className=" w-20" src={Client2} alt="logo-client-4" />
+                <img className=" w-20" src={Client4} alt="logo-client-5" />
+                <img className=" w-20" src={Client6} alt="logo-client-6" />
+              </div>
+            </div>
+
+            <div className="p-6 bg-white rounded-xl shadow">
               <h4 className="font-semibold">Official Partner</h4>
               <div className="mt-2 flex justify-center">
                 <div>
@@ -425,18 +466,6 @@ export default function App() {
                   <p className=" text-end font-bold text-2xl">KIARA</p>
                   <p className=" text-end font-bold">GROUP</p>
                 </div>
-              </div>
-            </div>
-
-            <div className="p-6 bg-white rounded-xl shadow">
-              <h4 className="font-semibold">Powered By</h4>
-              <div className=" grid md:grid-cols-3 grid-cols-2 items-center gap-4 mt-2">
-                <img className=" w-28" src={Client1} alt="logo-client-1" />
-                <img className=" w-28" src={Client5} alt="logo-client-2" />
-                <img className=" w-28" src={Client3} alt="logo-client-3" />
-                <img className=" w-20" src={Client2} alt="logo-client-4" />
-                <img className=" w-20" src={Client4} alt="logo-client-5" />
-                <img className=" w-20" src={Client6} alt="logo-client-6" />
               </div>
             </div>
           </div>
