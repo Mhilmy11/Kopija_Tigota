@@ -1,14 +1,17 @@
 import { FiMenu, FiX } from "react-icons/fi";
 import LogoKopijaTigota from "../assets/logo-only-nobg.png";
+import AotcaLogo from "../assets/logo-AOTCA.png";
+import IKPIlogo from "../assets/Logo-IKPI.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({
-  setModalOpen,
   onClickAboutRef,
   onClickActivitiesRef,
   onClickGalleryRefRef,
   onClickPartnerRef,
 }) {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -30,6 +33,12 @@ export default function Navbar({
           </div>
         </div>
         <div className="hidden md:flex items-center gap-6">
+          <button
+            onClick={() => navigate("/")}
+            className="hover:underline cursor-pointer"
+          >
+            Home
+          </button>
           <button
             onClick={onClickAboutRef}
             className="hover:underline cursor-pointer"
@@ -54,12 +63,13 @@ export default function Navbar({
           >
             Partners
           </button>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="ml-4 px-4 py-2 rounded-full bg-amber-50 text-green-700 font-semibold shadow cursor-pointer"
-          >
-            Join
-          </button>
+          <div>
+            <img
+              className=" w-10 ml-5"
+              src={AotcaLogo}
+              alt="logo-aotca-navbar"
+            />
+          </div>
         </div>
         <button
           className="md:hidden p-2 rounded bg-white/10"
@@ -69,20 +79,26 @@ export default function Navbar({
         </button>
       </div>
       {menuOpen && (
-        <div className="md:hidden px-4 pb-4">
+        <div className="md:hidden px-4 pb-4 grid grid-cols-1 justify-center">
+          <button onClick={() => navigate("/")} className="block py-2">
+            Home
+          </button>
           <button className="block py-2">About</button>
           <button className="block py-2">Activities</button>
           <button className="block py-2">Gallery</button>
           <button className="block py-2">Partners</button>
-          <button
-            onClick={() => {
-              setModalOpen(true);
-              setMenuOpen(false);
-            }}
-            className="w-full mt-2 py-2 rounded bg-amber-50 text-green-700 font-semibold cursor-pointer"
-          >
-            Join
-          </button>
+          <div className=" flex justify-between">
+            <img
+              className=" w-20 ml-5 pt-3"
+              src={AotcaLogo}
+              alt="logo-aotca-navbar"
+            />
+            <img
+              className=" w-20 ml-5 pt-3"
+              src={IKPIlogo}
+              alt="logo-ikpi-navbar"
+            />
+          </div>
         </div>
       )}
     </nav>

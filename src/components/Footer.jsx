@@ -1,12 +1,14 @@
 import { FaInstagram } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import LogoKopijaTigota from "../assets/logo-only-nobg.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer({
   onClickAboutRef,
   onClickActivitiesRef,
   onClickGalleryRefRef,
 }) {
+  const navigate = useNavigate();
   return (
     <footer className="mt-12 bg-green-900 text-amber-50 py-10">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
@@ -30,6 +32,14 @@ export default function Footer({
         <div>
           <h5 className="font-semibold">Quick Links</h5>
           <ul className="mt-3 text-sm space-y-2 opacity-90">
+            <li>
+              <button
+                className=" cursor-pointer hover:underline"
+                onClick={() => navigate("/")}
+              >
+                Home
+              </button>
+            </li>
             <li>
               <button
                 className=" cursor-pointer hover:underline"
