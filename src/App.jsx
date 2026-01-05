@@ -1,7 +1,12 @@
 import "./App.css";
 
 import { useState, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -46,6 +51,8 @@ export default function App() {
           />
 
           <Route path="/layanan-probono" element={<ProBonoPage />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
         <Footer
