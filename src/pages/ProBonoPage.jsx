@@ -55,7 +55,7 @@ ${form.pesan}`;
 
               <div className=" pb-4">
                 <h3 className=" font-semibold pb-2 text-2xl">
-                  Lembaga Bantuan Pajak(LBP) KOPIJATIGOTA
+                  Lembaga Bantuan Pajak (LBP) KOPIJATIGOTA
                 </h3>
                 <p>
                   Didasarkan pada fakta bahwa masih banyak masyarakat yang belum
@@ -96,7 +96,8 @@ ${form.pesan}`;
               <div>
                 {/* <p className=" font-semibold">⚖️ Konsultasi</p> */}
                 <p className=" pl-2 pb-1">
-                  Diadakan secara tatap muka (onsite) di Warkop Kopijatigota
+                  Diadakan secara tatap muka (onsite) di{" "}
+                  <span className=" font-semibold">Warkop Kopijatigota</span>{" "}
                   alamat ada dibawah ini :{" "}
                 </p>
                 <div className="aspect-[16/9] w-full pl-2">
@@ -112,7 +113,7 @@ ${form.pesan}`;
 
               <div className=" text-center pt-10">
                 <h3 className=" text-green-900 font-bold text-xl">
-                  Konsultasikan di sini
+                  Isi Formulir Perjanjian disini
                 </h3>
                 <p className=" py-5">
                   Masukkan nama, email serta pertanyaan Anda dan jawaban akan
