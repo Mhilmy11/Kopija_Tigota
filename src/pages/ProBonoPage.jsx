@@ -47,7 +47,7 @@ ${form.pesan}`;
             <div className=" px-5">
               <div className=" pb-5">
                 <img
-                  className=" rounded-2xl"
+                  className=" rounded-lg"
                   src={ProbonoImage}
                   alt="image-probono"
                 />
@@ -65,7 +65,8 @@ ${form.pesan}`;
                   Direktorat Jenderal Pajak memberikan Layanan Bantuan
                   Konsultasi, Edukasi dan Sosialisasi khusus Perpajakan kepada
                   masyarakat umum dan UMKM dalam melaksanakan kewajiban
-                  perpajakan Tanpa dipungut biaya. (Gratis)
+                  perpajakan Tanpa dipungut biaya.{" "}
+                  <span className=" font-semibold">(Gratis)</span>
                 </p>
                 <p className=" pt-2">
                   Anggota Komunitas Kopijatigota terdiri dari profesional
@@ -77,30 +78,26 @@ ${form.pesan}`;
                 </p>
               </div>
 
-              <div className=" pl-3 pt-6">
+              <div>
                 <p className=" font-semibold">🎥 Edukasi & Sosialisi</p>
-                <p className=" pl-2">
-                  Melalui daring online Webinar / seminar perpajakan
-                </p>
+                <p>Melalui daring online Webinar / seminar perpajakan</p>
               </div>
 
-              <div className=" pl-3 py-6">
+              <div className=" py-4">
                 <p className=" font-semibold">🕖 Waktu Operasional</p>
-                <p className=" pl-2">
-                  Senin sd Kamis | 10.00 - 16.00 (Kecuali Libur)
-                </p>
+                <p>Senin sd Kamis | 10.00 - 16.00 (Kecuali Libur)</p>
               </div>
             </div>
 
             <div className=" px-10">
               <div>
-                {/* <p className=" font-semibold">⚖️ Konsultasi</p> */}
-                <p className=" pl-2 pb-1">
+                <p className=" font-semibold">⚖️ Konsultasi</p>
+                <p className=" pb-1">
                   Diadakan secara tatap muka (onsite) di{" "}
                   <span className=" font-semibold">Warkop Kopijatigota</span>{" "}
                   alamat ada dibawah ini :{" "}
                 </p>
-                <div className="aspect-[16/9] w-full pl-2">
+                <div className="aspect-[16/9] w-full">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.690912808303!2d106.8412859739909!3d-6.304280093684942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed0057db8fe1%3A0x2d6a8c8e85ab3695!2sWarkop%20KOPIJATIGOTA!5e0!3m2!1sen!2sid!4v1767605842947!5m2!1sen!2sid"
                     className="w-full h-full rounded-lg"
@@ -116,8 +113,8 @@ ${form.pesan}`;
                   Isi Formulir Perjanjian disini
                 </h3>
                 <p className=" py-5">
-                  Masukkan nama, email serta pertanyaan Anda dan jawaban akan
-                  kami publikasikan di halaman ini.
+                  Masukkan Nama, Email serta pertanyaan Anda dan jawaban akan
+                  kami jawab melalui Whatsapp.
                 </p>
               </div>
 
