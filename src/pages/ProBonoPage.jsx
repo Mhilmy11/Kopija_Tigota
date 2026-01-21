@@ -55,7 +55,7 @@ ${form.pesan}`;
 
               <div className=" pb-4">
                 <h3 className=" font-semibold pb-2 text-2xl">
-                  Lembaga Bantuan Pajak (LBP) KOPIJATIGOTA
+                  KOPIJATIGOTA Pro Bono Tax Advisory
                 </h3>
                 <p>
                   Didasarkan pada fakta bahwa masih banyak masyarakat yang belum
