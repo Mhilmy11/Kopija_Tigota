@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import photos from "../assets/data/media";
 
 import AotcaLogo from "../assets/logo-AOTCA.png";
 import IKPIlogo from "../assets/Logo-IKPI.png";
@@ -19,74 +20,25 @@ import Client5 from "../assets/clients/client5.png";
 import Client6 from "../assets/clients/client6.png";
 import Client7 from "../assets/clients/client7.png";
 
-import Instagram1 from "../assets/media/Instagram1.jpg";
-import Instagram2 from "../assets/media/Instagram2.jpg";
-import Instagram3 from "../assets/media/Instagram3.jpg";
-import Instagram4 from "../assets/media/Instagram4.jpg";
-import Instagram5 from "../assets/media/Instagram5.jpg";
-import Instagram6 from "../assets/media/Instagram6.jpg";
-import Instagram7 from "../assets/media/Instagram7.jpg";
-import Instagram8 from "../assets/media/Instagram8.jpg";
-import Instagram9 from "../assets/media/Instagram9.jpeg";
-
-const photos = [
-  {
-    src: Instagram1,
-    caption: "AOTCA 2024 Hounzou China",
-  },
-  {
-    src: Instagram2,
-    caption: "Silaturahmi alumni setelah acara resmi",
-  },
-  {
-    src: Instagram3,
-    caption:
-      "Mengikuti acara buka bersama Asosiasi CEO Mastermind Indonesia (ACMI)",
-  },
-  {
-    src: Instagram4,
-    caption: "Studi kasus bersama narasumber",
-  },
-  {
-    src: Instagram5,
-    caption: "Foto bersama peserta AOTCA",
-  },
-  {
-    src: Instagram6,
-    caption:
-      "Kopijatigota silaturahmi ke Kantor PKF dan Pratama Konsultan 22 September 20225",
-  },
-  {
-    src: Instagram7,
-    caption:
-      "Kopijatigota ikut berpartisipasi dalam mensponsori kegiatan HUT IKPI Ke 80",
-  },
-  {
-    src: Instagram8,
-    caption:
-      "Kopijatigota silaturahmi di acara Halal Bi Halal IKPI Pusat di Hotel Aston Kartika Grogol",
-  },
-];
-
 const FOR_HERO = [
   {
     id: 1,
     activity: "AOTCA 2024",
     location: "Hounzou, China",
-    pict: Instagram1,
+    pict: photos[1].src,
   },
   {
     id: 2,
     activity: "AOTCA 2025",
     location: "Nepal, South Asia",
-    pict: Instagram9,
+    pict: photos[8].src,
   },
 ];
 
 const handleClickInstagram = () => {
   window.open(
     "https://www.instagram.com/kopijatigota?igsh=MXN0ZjY1NXR2c290Ng==",
-    "_blank"
+    "_blank",
   );
 };
 
@@ -96,7 +48,6 @@ export default function HomePage({
   activitiesRef,
   galleryRef,
   partnerRef,
-  setModalOpen,
 }) {
   const navigate = useNavigate();
   const carouselRef = useRef(null);
@@ -213,7 +164,7 @@ export default function HomePage({
               Tentang KOPIJATIGOTA
             </h2>
             <p className="mt-4 text-slate-700 leading-relaxed">
-              Komunitas IKPI Jaktim Goes To AOTCA, disingkat Kopijatigota, hadir
+              Komunitas IKPI Goes To AOTCA, disingkat Kopijatigota, hadir
               sebagai wadah silaturahmi dan komunikasi bagi alumni AOTCA serta
               calon peserta. Tujuan utama kami adalah membangun jejaring
               profesional, berbagi ilmu, dan mempererat hubungan antar anggota
@@ -306,7 +257,7 @@ export default function HomePage({
 
             <div className=" flex gap-2">
               <button
-                onClick={() => setModalOpen(true)}
+                onClick={() => navigate("/registrasi-anggota")}
                 className="mt-auto py-2 rounded-lg bg-green-900 hover:bg-green-800 text-amber-50 font-semibold cursor-pointer w-full"
               >
                 Daftar Jadi Anggota

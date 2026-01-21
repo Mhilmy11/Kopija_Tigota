@@ -20,18 +20,18 @@ export default function ProBonoPage() {
 
     const message = `Halo, saya ingin konsultasi.
 
-Nama: ${form.nama}
-Email: ${form.email}
-No HP: ${form.phone}
+    *Nama:* ${form.nama}
+    *Email:* ${form.email}
+    *No HP:* ${form.phone}
 
-Pertanyaan:
+*Pertanyaan:*
 ${form.pesan}`;
 
     const encodedMessage = encodeURIComponent(message);
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
-      "_blank"
+      "_blank",
     );
   };
 

@@ -2,24 +2,27 @@ import "./App.css";
 
 import { useState, useRef } from "react";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Modal from "./components/Modal";
 import HomePage from "./pages/HomePage";
 import ProBonoPage from "./pages/ProBonoPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
-export default function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+const MainContent = () => {
   const aboutRef = useRef(null);
   const activitiesRef = useRef(null);
   const galleryRef = useRef(null);
   const partnerRef = useRef(null);
+
+  const location = useLocation();
+  const hideLayout = ["/registrasi-anggota"].includes(location.pathname);
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -27,42 +30,51 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans bg-amber-50 text-slate-800">
-      <Router>
+      {!hideLayout && (
         <Navbar
           onClickAboutRef={() => scrollToSection(aboutRef)}
           onClickActivitiesRef={() => scrollToSection(activitiesRef)}
           onClickGalleryRefRef={() => scrollToSection(galleryRef)}
           onClickPartnerRef={() => scrollToSection(partnerRef)}
         />
+      )}
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                onClickAboutRef={() => scrollToSection(aboutRef)}
-                aboutRef={aboutRef}
-                activitiesRef={activitiesRef}
-                galleryRef={galleryRef}
-                partnerRef={partnerRef}
-                setModalOpen={setModalOpen}
-              />
-            }
-          />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              onClickAboutRef={() => scrollToSection(aboutRef)}
+              aboutRef={aboutRef}
+              activitiesRef={activitiesRef}
+              galleryRef={galleryRef}
+              partnerRef={partnerRef}
+            />
+          }
+        />
 
-          <Route path="/layanan-probono" element={<ProBonoPage />} />
+        <Route path="/layanan-probono" element={<ProBonoPage />} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <Route path="/registrasi-anggota" element={<RegistrationPage />} />
 
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+
+      {!hideLayout && (
         <Footer
           onClickAboutRef={() => scrollToSection(aboutRef)}
           onClickActivitiesRef={() => scrollToSection(activitiesRef)}
           onClickGalleryRefRef={() => scrollToSection(galleryRef)}
         />
-
-        {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
-      </Router>
+      )}
     </div>
+  );
+};
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <MainContent />
+    </BrowserRouter>
   );
 }
