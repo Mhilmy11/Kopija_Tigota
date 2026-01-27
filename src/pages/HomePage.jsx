@@ -9,6 +9,13 @@ import { motion } from "framer-motion";
 import { FiCamera } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
 import { AiFillRightCircle, AiFillLeftCircle } from "react-icons/ai";
+import {
+  FaGlobeAsia,
+  FaHandshake,
+  FaUsers,
+  FaHeart,
+  FaBullseye,
+} from "react-icons/fa";
 
 import KiaraGroupLogo from "../assets/kiara-group.png";
 
@@ -34,6 +41,11 @@ const FOR_HERO = [
     pict: photos[8].src,
   },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const handleClickInstagram = () => {
   window.open(
@@ -156,6 +168,132 @@ export default function HomePage({
           </div>
         </div>
       </header>
+
+      <section className="bg-amber-50 pt-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900">
+              Vision, Mission & Values
+            </h2>
+            <p className="mt-3 text-gray-600">
+              Fondasi dan arah perjalanan Komunitas Konsultan Pajak
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-2xl shadow-sm p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-green-900 text-white p-3 rounded-xl">
+                  <FaGlobeAsia size={22} />
+                </div>
+                <h3 className="text-xl font-semibold text-green-900">Vision</h3>
+              </div>
+
+              <p className="text-gray-700 leading-relaxed">
+                Menjadikan{" "}
+                <span className="font-semibold">Komunitas Konsultan Pajak</span>{" "}
+                sebagai komunitas kelas dunia yang profesional, kolaboratif, dan
+                berdampak nyata.
+              </p>
+
+              <div className="mt-6 border-l-4 border-green-900 pl-4 italic text-gray-600">
+                “Dari anggota, oleh anggota, dan untuk anggota”
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-2xl shadow-sm p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-green-900 text-white p-3 rounded-xl">
+                  <FaBullseye size={22} />
+                </div>
+                <h3 className="text-xl font-semibold text-green-900">
+                  Mission
+                </h3>
+              </div>
+
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="text-green-900">•</span>
+                  Menyelenggarakan kegiatan edukatif dan profesional
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-green-900">•</span>
+                  Meningkatkan prestasi dan kompetensi anggota
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-green-900">•</span>
+                  Membangun kemitraan strategis yang berkelanjutan
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-16"
+          >
+            <h3 className="text-2xl font-semibold text-center text-green-900 mb-10">
+              Pedoman Komunitas
+            </h3>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: <FaHandshake />, title: "Keterbukaan" },
+                { icon: <FaUsers />, title: "Kebersamaan" },
+                { icon: <FaGlobeAsia />, title: "Kolaborasi" },
+                { icon: <FaHeart />, title: "Kebaikan" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition"
+                >
+                  <div className="mx-auto mb-4 w-12 h-12 flex items-center justify-center bg-green-900 text-white rounded-xl">
+                    {item.icon}
+                  </div>
+                  <p className="font-medium text-gray-800">{item.title}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 bg-green-900 rounded-2xl p-8 text-center text-white"
+          >
+            <h3 className="text-2xl font-semibold mb-4">Tujuan Komunitas</h3>
+            <p className="max-w-3xl mx-auto leading-relaxed">
+              Menjadi sarana komunikasi dan silaturahmi bagi anggota
+              Kopijatigota, alumni AOTCA, serta individu yang berminat mengikuti
+              AOTCA.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       <section ref={aboutRef} className="max-w-6xl mx-auto px-4 py-32">
         <div className="grid md:grid-cols-3 gap-8 items-start">
