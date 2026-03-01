@@ -24,60 +24,73 @@ export default function Footer({
             calon peserta AOTCA.
           </div>
 
-          <div className="text-sm mt-3 italic">
-            © {new Date().getFullYear()} KOPIJATIGOTA — All rights reserved
+          <div className=" mt-3">
+            <p className=" font-bold text-sm">secretary office :</p>
+            <p className=" text-sm italic">
+              Davenue Office Space Tanjung Barat Indah Jl. TB Simatupang Blok
+              F/4 West Tanjung, South Jakarta, Jakarta City 12530
+            </p>
           </div>
         </div>
 
-        <div>
-          <h5 className="font-semibold">Quick Links</h5>
-          <ul className="mt-3 text-sm space-y-2 opacity-90">
-            <li>
-              <button
-                className=" cursor-pointer hover:underline"
-                onClick={() => navigate("/")}
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button
-                className=" cursor-pointer hover:underline"
-                onClick={onClickAboutRef}
-              >
-                About
-              </button>
-            </li>
-            <li>
-              <button
-                className=" cursor-pointer hover:underline"
-                onClick={onClickActivitiesRef}
-              >
-                Activities
-              </button>
-            </li>
-            <li>
-              <button
-                className=" cursor-pointer hover:underline"
-                onClick={onClickGalleryRefRef}
-              >
-                Gallery
-              </button>
-            </li>
-          </ul>
-        </div>
+        <div></div>
 
         <div>
-          <h5 className="font-semibold">Contact</h5>
-          <div className="mt-3 text-sm opacity-90">
-            <div className=" flex items-center gap-1">
-              <HiOutlineMail size={20} />
-              <p>info.admin@kopijatigota.id</p>
+          <div className=" flex gap-6">
+            <div>
+              <h5 className="font-semibold">Quick Links</h5>
+              <ul className="mt-2 text-sm space-y-2 opacity-90">
+                <li>
+                  <button
+                    className=" cursor-pointer hover:underline"
+                    onClick={() => navigate("/")}
+                  >
+                    Home
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className=" cursor-pointer hover:underline"
+                    onClick={onClickAboutRef}
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className=" cursor-pointer hover:underline"
+                    onClick={onClickActivitiesRef}
+                  >
+                    Activities
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className=" cursor-pointer hover:underline"
+                    onClick={onClickGalleryRefRef}
+                  >
+                    Gallery
+                  </button>
+                </li>
+              </ul>
             </div>
-            <div className=" flex items-center gap-1 mt-2">
-              <FaInstagram size={20} />
-              <p>@kopijatigota</p>
+
+            <div>
+              <h5 className="font-semibold">Contact</h5>
+              <div className="mt-2 text-sm opacity-90">
+                <div className=" flex items-center gap-1">
+                  <HiOutlineMail size={20} />
+                  <p>info.admin@kopijatigota.id</p>
+                </div>
+                <div className=" flex items-center gap-1 mt-2">
+                  <FaInstagram size={20} />
+                  <p>@kopijatigota</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="text-sm mt-5 italic text-center">
+            © {new Date().getFullYear()} KOPIJATIGOTA — All rights reserved
           </div>
         </div>
       </div>
