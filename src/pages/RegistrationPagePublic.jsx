@@ -150,7 +150,8 @@ Mohon ACC nya untuk saya bergabung ke group. Terima kasih.`;
               ) : (
                 <>
                   <p className=" font-bold md:text-4xl text-3xl">
-                    DAFTARKAN DIRI ANDA SEBAGAI ANGGOTA KOPIJATIGOTA
+                    DAFTARKAN DIRI ANDA SEBAGAI ANGGOTA KOPIJATIGOTA{" "}
+                    <span className=" text-2xl italic">(Khusus Mahasiswa)</span>
                   </p>
                   <p className=" pt-3 md:text-sm text-xs text-gray-500 px-1">
                     Kopijatigota: wadah silaturahmi alumni & calon peserta AOTCA
@@ -258,26 +259,12 @@ Mohon ACC nya untuk saya bergabung ke group. Terima kasih.`;
                     </p>
                   </div>
 
-                  <div className=" flex items-center gap-4">
-                    <button
-                      onClick={() =>
-                        window.open(
-                          "https://chat.whatsapp.com/G28wz8upk5kBp7qBiMhbiu?mode=gi_t",
-                          "blank_",
-                        )
-                      }
-                      className=" flex gap-1 items-center bg-green-600 p-2 rounded-lg font-semibold cursor-pointer hover:bg-green-500 transition text-white"
-                    >
-                      <MdWhatsapp size={25} /> Join Whatsapp Group
-                    </button>
-
-                    <button
-                      onClick={verifyToAdmin}
-                      className=" flex items-center gap-1 p-2 rounded-lg font-semibold cursor-pointer border border-slate-400 hover:bg-gray-100 transition"
-                    >
-                      <MdWhatsapp size={25} /> Admin KOPIJATIGOTA
-                    </button>
-                  </div>
+                  <button
+                    onClick={verifyToAdmin}
+                    className=" flex justify-center items-center gap-1 p-2 rounded-lg font-semibold cursor-pointer bg-green-600 hover:bg-green-500 transition text-white"
+                  >
+                    <MdWhatsapp size={25} /> Admin KOPIJATIGOTA
+                  </button>
                 </div>
               )}
             </div>
