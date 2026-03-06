@@ -1,69 +1,51 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import LogoKopijaTigota from "../assets/logo-only-nobg.png";
+import AotcaLogo from "../assets/logo-AOTCA.png";
+import IKPIlogo from "../assets/Logo-IKPI.png";
 
 export default function Modal({ onClose }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleSendWA = () => {
-    if (!name || !email) {
-      alert("Harap isi semua field terlebih dahulu.");
-      return;
-    }
-
-    const message = `Halo Admin!%0A%0ASaya tertarik untuk Join ke Komunitas Kopijatigota.%0A%0ANama: ${name}%0AEmail: ${email}`;
-
-    const waUrl = `https://wa.me/6287772089553?text=${message}`;
-
-    window.open(waUrl, "_blank");
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/30" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="relative z-10 w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden"
+        className="relative z-10 w-full max-w-md bg-amber-50 rounded-xl shadow-xl overflow-hidden"
       >
         <div className="p-4">
-          <h3 className="text-xl font-bold text-green-900">
-            Form Pendaftaran Singkat
-          </h3>
-          <p className="text-sm text-slate-600 mt-2">
-            Isi data singkat untuk bergabung atau dapatkan info acara terbaru.
-          </p>
-          <form onSubmit={handleSendWA} className="mt-4 grid gap-3">
-            <input
-              required
-              className="p-3 rounded border"
-              placeholder="Nama Lengkap"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+          <h2 className="text-lg font-semibold text-center">
+            Apakah anda anggota dari "Ikatan Konsultan Pajak Indonesia" (IKPI)?
+          </h2>
+
+          <div className="flex flex-col gap-3 mt-6">
+            <button
+              onClick={() => navigate("/registrasi-anggota-umum")}
+              className="w-full py-2 rounded-lg border border-gray-400 hover:bg-gray-100 transition cursor-pointer"
+            >
+              Bukan, saya bukan anggota IKPI
+            </button>
+
+            <button
+              onClick={() => navigate("/registrasi-anggota-ikpi")}
+              className="w-full py-2 rounded-lg text-white bg-green-900 hover:bg-green-800 transition cursor-pointer"
+            >
+              Ya, saya anggota IKPI
+            </button>
+          </div>
+
+          <div className=" pt-5 flex justify-center items-center gap-4">
+            <img
+              className=" w-10"
+              src={LogoKopijaTigota}
+              alt="kopijatigota-logo"
             />
-            <input
-              required
-              type="email"
-              className="p-3 rounded border"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <div className="flex gap-3">
-              <button
-                type="submit"
-                className="py-2 px-4 rounded bg-green-900 text-amber-50 font-semibold cursor-pointer"
-              >
-                Kirim
-              </button>
-              <button
-                onClick={onClose}
-                className="py-2 px-4 rounded border cursor-pointer"
-              >
-                Batal
-              </button>
-            </div>
-          </form>
+            <img className=" w-10" src={AotcaLogo} alt="aotca-logo" />
+            <img className=" w-10" src={IKPIlogo} alt="ikpi-logo" />
+          </div>
         </div>
       </motion.div>
     </div>

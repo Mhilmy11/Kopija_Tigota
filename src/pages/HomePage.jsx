@@ -5,6 +5,8 @@ import photos from "../assets/data/media";
 import AotcaLogo from "../assets/logo-AOTCA.png";
 import IKPIlogo from "../assets/Logo-IKPI.png";
 
+import Modal from "../components/Modal";
+
 import { motion } from "framer-motion";
 import { FiCamera } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
@@ -61,6 +63,8 @@ export default function HomePage({
   galleryRef,
   partnerRef,
 }) {
+  const [chooseModal, setIsChooseModal] = useState(false);
+
   const navigate = useNavigate();
   const carouselRef = useRef(null);
 
@@ -81,6 +85,8 @@ export default function HomePage({
   };
   return (
     <>
+      {chooseModal && <Modal onClose={() => setIsChooseModal(false)} />}
+
       <header className="pt-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -395,7 +401,7 @@ export default function HomePage({
 
             <div className=" flex gap-2">
               <button
-                onClick={() => navigate("/registrasi-anggota")}
+                onClick={() => setIsChooseModal(true)}
                 className="mt-auto py-2 rounded-lg bg-green-900 hover:bg-green-800 text-amber-50 font-semibold cursor-pointer w-full"
               >
                 Daftar Jadi Anggota

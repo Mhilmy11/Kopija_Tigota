@@ -24,12 +24,22 @@ export default function Footer({
             calon peserta AOTCA.
           </div>
 
-          <div className=" mt-3">
-            <p className=" font-bold text-sm">secretary office :</p>
-            <p className=" text-sm italic">
-              Davenue Office Space Tanjung Barat Indah Jl. TB Simatupang Blok
-              F/4 West Tanjung, South Jakarta, Jakarta City 12530
-            </p>
+          <div className=" mt-3 flex gap-2">
+            <div>
+              <p className=" font-bold text-sm">secretary office</p>
+              <p className=" text-sm italic">
+                Davenue Office Space Tanjung Barat Indah Jl. TB Simatupang Blok
+                F/4 West Tanjung, South Jakarta, Jakarta City 12530
+              </p>
+            </div>
+
+            <div>
+              <p className=" font-bold text-sm">Warkop Kopijatigota</p>
+              <p className=" text-sm italic">
+                Jl. TB Simatupang Jl. Nangka Raya No.52 B, RT.8/RW.5 Jagakarsa,
+                Kota Jakarta Selatan 12530
+              </p>
+            </div>
           </div>
         </div>
 

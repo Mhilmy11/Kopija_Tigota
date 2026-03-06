@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -13,7 +13,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProBonoPage from "./pages/ProBonoPage";
-import RegistrationPage from "./pages/RegistrationPage";
+import RegistrationPageIKPI from "./pages/RegistrationPageIKPI";
+import RegistrationPagePublic from "./pages/RegistrationPagePublic";
 
 const MainContent = () => {
   const aboutRef = useRef(null);
@@ -22,7 +23,10 @@ const MainContent = () => {
   const partnerRef = useRef(null);
 
   const location = useLocation();
-  const hideLayout = ["/registrasi-anggota"].includes(location.pathname);
+  const hideLayout = [
+    "/registrasi-anggota-ikpi",
+    "/registrasi-anggota-umum",
+  ].includes(location.pathname);
 
   const scrollToSection = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,7 +59,14 @@ const MainContent = () => {
 
         <Route path="/layanan-probono" element={<ProBonoPage />} />
 
-        <Route path="/registrasi-anggota" element={<RegistrationPage />} />
+        <Route
+          path="/registrasi-anggota-ikpi"
+          element={<RegistrationPageIKPI />}
+        />
+        <Route
+          path="/registrasi-anggota-umum"
+          element={<RegistrationPagePublic />}
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
