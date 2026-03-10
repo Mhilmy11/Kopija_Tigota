@@ -112,10 +112,10 @@ export default function HomePage({
                   Layanan Pro Bono
                 </button>
                 <button
-                  onClick={onClickAboutRef}
+                  onClick={() => setIsChooseModal(true)}
                   className="px-5 py-3 rounded-lg border border-green-900 text-green-900 font-semibold hover:bg-green-50 cursor-pointer"
                 >
-                  Pelajari Lebih Lanjut
+                  Daftar Jadi Anggota
                 </button>
               </div>
 
